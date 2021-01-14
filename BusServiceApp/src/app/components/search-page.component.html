@@ -1,0 +1,15 @@
+<div class="mt-4">
+    <div class="mt-4 mb-4">
+        <h2>Search For Your Buses!</h2>
+    </div>
+    <form [formGroup]="searchForm" (ngSubmit)="searchArrival()">
+        <div class="input-group">
+            <input type="number" formControlName="busStopCode" placeholder="Bus Stop Code (Mandatory)" class="form-control">
+            <input type="number" formControlName="serviceNo" placeholder="Service No (Optional)" class="form-control">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" [disabled]="searchForm.invalid" type="submit">Search</button>
+            </div>
+        </div>
+    </form>
+    <button type="button" class="btn btn-dark btn-block mt-4" [routerLink]="['/']">Back</button>
+</div>

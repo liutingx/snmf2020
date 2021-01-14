@@ -1,0 +1,21 @@
+<button type="button" class="btn btn-block btn-dark" [routerLink]="['/bookmarks/create']">Create A Bookmark!</button>
+
+<hr>
+
+<div class="list-group mb-4">
+    <div *ngFor="let each of bookmarksList">
+        <div class="d-flex justify-content-between mt-4">
+            <a class="list-group-item list-group-item-action"
+            [routerLink]="['/bookmarks/edit', each.bookmark_id]">
+            <h4>{{each.description}}</h4>
+            <ul>
+                <li><i>Bus Stop Code: </i>{{each.busStopCode}}</li>
+                <li><i>Road Name: </i>{{each.roadName}}</li>
+            </ul>
+            </a>
+        <i [className]="each.bookmarked?'fas fa-heart': 'far fa-heart'" (click)="bookmark(each)"></i>
+        </div>
+        <br>
+        <button type="button" class="btn btn-block btn-info" [routerLink]="['/arrival', each.busStopCode]">Search Bus Stop Code</button>
+    </div>
+</div>

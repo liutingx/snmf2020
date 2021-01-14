@@ -1,0 +1,34 @@
+<h3 *ngIf="!edit">New Bookmark</h3>
+<h3 *ngIf="edit">Edit Bookmark</h3>
+<hr>
+<form [formGroup]="bookmarkForm">
+    <div class="form-group d-flex justify-content-between">
+        <div>
+            <label for="busStopCode">Bus Stop Code:</label>
+            <br>
+            <input type="text" id="busStopCode" (change)="selectedBusCode($event)" formControlName="busStopCode" list="choose-list">
+            <datalist id="choose-list">
+                <option *ngFor="let each of busStopInfo" class="form-control" value={{each.BusStopCode}}>
+            </datalist>
+        </div>
+        <h5><i style="color: crimson">{{showError}}</i></h5>
+    </div>
+    <div *ngIf="roadName">
+        <div class="form-group">
+            <label for="roadName">Roadname:</label>
+            <input type="text" id="roadName" disabled="true" class="form-control" value={{roadName}}>
+        </div>
+        <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" formControlName="description" class="form-control">
+        </div>
+    </div>
+    <button type="button" class="btn btn-primary" [disabled]="!valid || bookmarkForm.invalid" *ngIf="!edit" (click)="bookmark()">Make bookmark</button>
+    <div *ngIf="edit" class="d-flex justify-content-between">
+        <button type="button" class="btn btn-primary" [disabled]="valid || bookmarkForm.invalid" (click)="editBookmark()">Edit bookmark</button>
+        <button type="button" class="btn btn-warning" [routerLink]="['/bookmarks']">Cancel</button>
+    </div>
+    
+</form>
+
+

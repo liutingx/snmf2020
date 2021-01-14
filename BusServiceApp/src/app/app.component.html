@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/']">
+    <img src="/assets/bus_image.png" width="50" height="50" class="d-inline-block align-center mr-2" alt="">
+    <i>Bus Arrival App</i>
+  </a>
+  <br><hr>
+  <i *ngIf="user"><b>{{user}}</b></i>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <img src="/assets/profile.png" width="50" height="50" class="my-2 my-sm-0"/>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+      <div *ngIf="loginText=='Logout'">
+        <a class="dropdown-item" [routerLink]="['/profile']">Profile</a>
+        <div class="dropdown-divider"></div>
+      </div>
+      <a class="dropdown-item" (click)="toggleLogin()">{{loginText}}</a>
+      <a class="dropdown-item" *ngIf="loginText=='Login'" [routerLink]="['/createAccount']">Register</a>
+      
+    </div>
+  </li>
+</nav>
+<div class="container mt-4">
+  <router-outlet></router-outlet>
+</div>

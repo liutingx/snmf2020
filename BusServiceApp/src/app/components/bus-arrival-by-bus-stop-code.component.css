@@ -1,0 +1,36 @@
+table {
+    text-align: center;
+}
+
+tr > * {
+    vertical-align : middle;
+}
+
+.arriving {
+    font-weight: bold;
+    background-color: green;
+    color: white;
+}
+
+.empty {
+    font-weight: 500;
+    color: green;
+}
+
+.average {
+    font-weight: 500;
+    color: orange;
+}
+
+.full {
+    font-weight: 500;
+    color: red;
+}
+
+.no-bus {
+    text-align: center;
+}
+
+hr {
+    margin: 10%;
+}

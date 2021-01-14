@@ -1,0 +1,41 @@
+<div *ngIf="busServiceInfo.length!=0">
+    <div class="header">
+        <h1><i>Service {{serviceNo}}</i></h1>
+    </div>
+    
+    <div *ngFor="let each of busServiceInfo" class="table-responsive mt-4">
+        <div class="d-flex justify-content-between">
+            <h4>Direction: {{each.Direction}}</h4>
+            <div>
+                <b>Origin: </b>{{each.OriginCode}}
+                <span class="mr-4"></span>|
+                <span class="mr-4"></span>
+                <b>Destination: </b>{{each.DestinationCode}}
+            </div>
+        </div>
+        
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">AM_Peak_Frequency (mins)</th>
+                    <th scope="col">AM_Offpeak_Frequency (mins)</th>
+                    <th scope="col">PM_Peak_Frequency (mins)</th>
+                    <th scope="col">PM_Offpeak_Frequency (mins)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <th scope="row">Bus Intervals</th>
+                <td>{{each.AM_Peak_Freq}}</td>
+                <td>{{each.AM_Offpeak_Freq}}</td>
+                <td>{{each.PM_Peak_Freq}}</td>
+                <td>{{each.PM_Offpeak_Freq}}</td>
+            </tbody>
+        </table>
+    </div>    
+</div>
+<div *ngIf="busServiceInfo.length==0" class="no-service">
+    <h2>No Such Bus Service! Search another!</h2>
+    <hr>
+</div>
+<button type="button" class="btn btn-dark btn-block" [routerLink]="['/busServices']">Back</button>

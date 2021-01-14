@@ -1,0 +1,22 @@
+.header {
+    background-color: #1a7ba9;
+    padding: 10px;
+    color: white;
+}
+
+table {
+    text-align: center;
+}
+
+th {
+    font-style: italic;
+}
+
+.no-service {
+    text-align: center;
+    margin: 10%;
+}
+
+hr {
+    margin: 10%;
+}

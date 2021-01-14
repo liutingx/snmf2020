@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-between">
+    <h2>Bus Stop Code: <span *ngIf="this.code.toString().length<5">0</span>{{code}}</h2>
+    <br>
+    <button type="button" class="btn btn-warning" [routerLink]="['/search']">Search another</button>
+</div>
+<div *ngIf="busArrival.length!=0">
+    <table class="table mt-4">
+        <thead>
+            <th>Bus</th>
+            <th>Operator</th>
+            <th>Coming in</th>
+            <th>Next Bus</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ea of busArrival">
+                <td>
+                    <div>{{ea.serviceNo}}</div>
+                </td>
+                <td>
+                    <div>{{ea.operator}}</div>
+                </td>
+                <td>
+                    <div *ngIf="gotService">
+                        <div *ngIf="!ea.arriving">
+                        {{ea.nextBus.estimatedArrival}}
+                        </div>
+                        <div *ngIf="ea.arriving" class="arriving">
+                            Arr
+                        </div>
+                        <div *ngIf="showAvailability">
+                            <div *ngIf="ea.nextBus.load=='SEA'" class="empty">
+                                Seats Available!
+                            </div>
+                            <div *ngIf="ea.nextBus.load=='SDA'" class="average">
+                                Standing Available!
+                            </div>
+                            <div *ngIf="ea.nextBus.load=='LSD'" class="full">
+                                Limited Standing!
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!gotService">
+                        No Service
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="gotService">
+                        <div *ngIf="ea.nextBus2.estimatedArrival">
+                            {{ea.nextBus2.estimatedArrival}}
+                        </div>
+                        <div *ngIf="!ea.nextBus2.estimatedArrival">
+                            No Service
+                        </div>
+                        <div *ngIf="showAvailability">
+                            <div *ngIf="ea.nextBus2.load=='SEA'" class="empty">
+                                Seats Available!
+                            </div>
+                            <div *ngIf="ea.nextBus2.load=='SDA'" class="average">
+                                Standing Available!
+                            </div>
+                            <div *ngIf="ea.nextBus2.load=='LSD'" class="full">
+                                Limited Standing!
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="!gotService">
+                        No Service
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="busArrival.length==0" class="no-bus">
+    <hr>
+    <h1>No buses available at this Bus Stop</h1>
+    <h3>Please check the Bus Stop Code!</h3>
+</div>

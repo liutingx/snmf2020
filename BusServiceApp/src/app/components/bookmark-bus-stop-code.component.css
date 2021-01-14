@@ -1,0 +1,8 @@
+.list-group-item {
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+li {
+    list-style: none;
+}
